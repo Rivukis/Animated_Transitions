@@ -7,8 +7,17 @@
 //
 
 #import "RIVCollectionVC.h"
+#import "RIVCustomCollectionCell.h"
+#import "RIVTransitionController.h"
+#import "RIVCellToDetailAnimation.h"
+#import "RIVCollectionDetailVC.h"
 
 @interface RIVCollectionVC () <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (strong, nonatomic) RIVTransitionController *transitionController;
+@property (strong, nonatomic) RIVCellToDetailAnimation *animation;
 
 @end
 
@@ -26,6 +35,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.animation = [RIVCellToDetailAnimation new];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,6 +50,46 @@
 #pragma mark - UICollectionView Delegate && Data Source
 
 
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 25;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    RIVCustomCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"customCell" forIndexPath:indexPath];
+    
+    if (indexPath.row % 2 == 1) {
+        cell.imageView.image = [UIImage imageNamed:@"Avater"];
+    } else {
+        cell.imageView.image = [UIImage imageNamed:@"man-avatar-1"];
+    }
+    
+    
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    RIVCustomCollectionCell *cell = (RIVCustomCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    
+    // Setup New VC
+    RIVCollectionDetailVC *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionDetailVC"];
+    CGRect thisIsUsedSoDetailVCDotViewWillBeLazilyInstantiated = detailVC.view.frame;
+    
+    // Setup Animation
+    self.animation.cellImageView = cell.imageView;
+    self.animation.cellImageCorrectedFrame = [cell.superview convertRect:cell.frame toView:self.view];
+    self.animation.detailImageView = detailVC.imageView;
+    self.animation.detailImageCorrectedFrame = [detailVC.imageView.superview convertRect:detailVC.imageView.frame toView:detailVC.view];
+    
+    // Setup Transition Controller
+    self.transitionController = [[RIVTransitionController alloc] initWithAnimation:self.animation];
+    detailVC.transitioningDelegate = self.transitionController;
+    
+    // Present New VC
+    [self presentViewController:detailVC animated:YES completion:nil];
+}
 
 
 

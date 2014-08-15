@@ -10,4 +10,6 @@
 
 @interface RIVCollectionDetailVC : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 @end

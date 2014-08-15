@@ -11,6 +11,7 @@
 		7A1C5FF5199D4E580078F34E /* RIVCustomCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C5FF4199D4E580078F34E /* RIVCustomCollectionCell.m */; };
 		7A1C5FF8199D4EB80078F34E /* RIVCollectionDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C5FF7199D4EB80078F34E /* RIVCollectionDetailVC.m */; };
 		7A1C5FFE199DB00F0078F34E /* RIVSqueezeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C5FFD199DB00F0078F34E /* RIVSqueezeAnimation.m */; };
+		7A1C6001199DDD9E0078F34E /* RIVCellToDetailAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C6000199DDD9E0078F34E /* RIVCellToDetailAnimation.m */; };
 		7AFC1251199C9A94005E1A81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFC1250199C9A94005E1A81 /* Foundation.framework */; };
 		7AFC1253199C9A94005E1A81 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFC1252199C9A94005E1A81 /* CoreGraphics.framework */; };
 		7AFC1255199C9A94005E1A81 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFC1254199C9A94005E1A81 /* UIKit.framework */; };
@@ -51,6 +52,8 @@
 		7A1C5FF7199D4EB80078F34E /* RIVCollectionDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIVCollectionDetailVC.m; sourceTree = "<group>"; };
 		7A1C5FFC199DB00E0078F34E /* RIVSqueezeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIVSqueezeAnimation.h; sourceTree = "<group>"; };
 		7A1C5FFD199DB00F0078F34E /* RIVSqueezeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIVSqueezeAnimation.m; sourceTree = "<group>"; };
+		7A1C5FFF199DDD9E0078F34E /* RIVCellToDetailAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIVCellToDetailAnimation.h; sourceTree = "<group>"; };
+		7A1C6000199DDD9E0078F34E /* RIVCellToDetailAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIVCellToDetailAnimation.m; sourceTree = "<group>"; };
 		7AFC124D199C9A94005E1A81 /* Transitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transitions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AFC1250199C9A94005E1A81 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7AFC1252199C9A94005E1A81 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -209,6 +212,8 @@
 				7AFC1297199C9CAE005E1A81 /* RIVScaleAnimation.m */,
 				7A1C5FFC199DB00E0078F34E /* RIVSqueezeAnimation.h */,
 				7A1C5FFD199DB00F0078F34E /* RIVSqueezeAnimation.m */,
+				7A1C5FFF199DDD9E0078F34E /* RIVCellToDetailAnimation.h */,
+				7A1C6000199DDD9E0078F34E /* RIVCellToDetailAnimation.m */,
 			);
 			name = Transition;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				7A1C5FFE199DB00F0078F34E /* RIVSqueezeAnimation.m in Sources */,
 				7AFC1292199C9BF9005E1A81 /* RIVBaseAnimation.m in Sources */,
 				7AFC1298199C9CAE005E1A81 /* RIVScaleAnimation.m in Sources */,
+				7A1C6001199DDD9E0078F34E /* RIVCellToDetailAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
