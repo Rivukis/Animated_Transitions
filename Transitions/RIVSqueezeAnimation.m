@@ -1,16 +1,16 @@
 //
-//  RIVScaleAnimation.m
+//  RIVSqueezeAnimation.m
 //  Transitions
 //
 //  Created by Brian Radebaugh on 8/14/14.
 //  Copyright (c) 2014 CleverKnot. All rights reserved.
 //
 
-#import "RIVScaleAnimation.h"
+#import "RIVSqueezeAnimation.h"
 
 static const NSTimeInterval defaultDuration = 0.5;
 
-@implementation RIVScaleAnimation
+@implementation RIVSqueezeAnimation
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
@@ -25,25 +25,32 @@ static const NSTimeInterval defaultDuration = 0.5;
     UIViewController *fromController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
-    UIView *presentedView;
-    CGAffineTransform transform = CGAffineTransformMakeScale(0.01, 0.01);
-    
+    UIView *fromView = fromController.view;
+    UIView *toView = toController.view;
     [containerView addSubview:toController.view];
     
+    CGFloat halfWidth = containerView.frame.size.width/2.0f;
+    CGAffineTransform skinnyLeft = CGAffineTransformConcat(CGAffineTransformMakeScale(0.01, 1),
+                                                           CGAffineTransformMakeTranslation(-halfWidth, 0.01));
+    CGAffineTransform skinnyRight = CGAffineTransformConcat(CGAffineTransformMakeScale(0.01, 1),
+                                                            CGAffineTransformMakeTranslation(halfWidth, 0.01));
+    CGAffineTransform fromTransform;
+    
     if (self.isPresenting) {
-        presentedView = toController.view;
-        presentedView.transform = transform;
-        transform = CGAffineTransformIdentity;
+        toView.transform = skinnyRight;
+        fromTransform = skinnyLeft;
     } else {
-        presentedView = fromController.view;
-        [containerView bringSubviewToFront:presentedView];
+        toView.transform = skinnyLeft;
+        fromTransform = skinnyRight;
     }
     
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 options:0 animations:^{
-        presentedView.transform = transform;
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+        toView.transform = CGAffineTransformIdentity;
+        fromView.transform = fromTransform;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
     }];
+    
 }
 
 - (void)setCustomDurationAll:(NSNumber *)durationAll

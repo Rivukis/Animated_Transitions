@@ -10,10 +10,14 @@
 @class RIVBaseAnimation;
 
 @interface RIVTransitionController : NSObject
-<UIViewControllerTransitioningDelegate>
+<UIViewControllerTransitioningDelegate,
+UINavigationControllerDelegate,
+UITabBarControllerDelegate>
 
 - (instancetype)initWithAnimation:(RIVBaseAnimation *)animation;
 
 @property (strong, nonatomic) RIVBaseAnimation *animation;
+
+//@property (strong, nonatomic) id<UINavigationControllerDelegate> navDelegate;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  RIVScaleAnimation.h
+//  RIVSqueezeAnimation.h
 //  Transitions
 //
 //  Created by Brian Radebaugh on 8/14/14.
@@ -8,7 +8,7 @@
 
 #import "RIVBaseAnimation.h"
 
-@interface RIVScaleAnimation : RIVBaseAnimation
+@interface RIVSqueezeAnimation : RIVBaseAnimation
 
 @property (readonly, nonatomic) NSNumber *defaultDuration;
 @property (strong, nonatomic,) NSNumber *customDurationAll;
