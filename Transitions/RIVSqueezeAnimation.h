@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 CleverKnot. All rights reserved.
 //
 
-#import "RIVBaseAnimation.h"
+#import <Foundation/Foundation.h>
+#import "RIVBaseAnimationProtocol.h"
 
-@interface RIVSqueezeAnimation : RIVBaseAnimation
+@interface RIVSqueezeAnimation : NSObject <RIVBaseAnimationProtocol>
 
 @property (readonly, nonatomic) NSNumber *defaultDuration;
 @property (strong, nonatomic,) NSNumber *customDurationAll;

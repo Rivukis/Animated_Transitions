@@ -8,26 +8,25 @@
 
 #import "RIVPresentingViewController.h"
 #import "RIVPresentedViewController.h"
+
 #import "RIVTransitionController.h"
 #import "RIVSlideAnimation.h"
 #import "RIVScaleAnimation.h"
 #import "RIVSqueezeAnimation.h"
 
+//#import "RIVInteractiveTransition.h"
+
 @interface RIVPresentingViewController ()
 
 @property (strong, nonatomic) RIVTransitionController *transitionController;
-
-@property (strong, nonatomic) RIVBaseAnimation *animation;
 
 @property (strong, nonatomic) RIVTransitionController *slideTransitionController;
 @property (strong, nonatomic) RIVTransitionController *scaleTransitionController;
 @property (strong, nonatomic) RIVTransitionController *squeezeTransitinoController;
 
+//@property (strong, nonatomic) RIVInteractiveTransition *interactiveAnimation;
+
 //@property (strong, nonatomic) NSTimer *timer;
-
-@end
-
-@interface RIVPresentingViewController () <UITabBarControllerDelegate>
 
 @end
 
@@ -50,10 +49,11 @@
     
     self.transitionController = self.slideTransitionController;
     self.navigationController.delegate = self.transitionController;
+    self.tabBarController.delegate = self.slideTransitionController;
     
-    
-//    self.animation = [RIVSlideAnimation new];
-    self.tabBarController.delegate = self;
+    UIScreenEdgePanGestureRecognizer *edgePan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(gestureHandler:)];
+    edgePan.edges = UIRectEdgeRight;
+    [self.view addGestureRecognizer:edgePan];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,18 +61,32 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)gestureHandler:(UIScreenEdgePanGestureRecognizer *)edgePan
 {
-//    NSLog(@"hello kitty");
+    CGPoint location = [edgePan locationInView:self.view];
+    double percentCompleted = (320.0f - location.x) / 320.0f;
     
+    switch (edgePan.state) {
+        case UIGestureRecognizerStateBegan:
+            NSLog(@"begin");
+            NSLog(@"%f", percentCompleted);
+            break;
+        case UIGestureRecognizerStateChanged:
+            NSLog(@"%f", percentCompleted);
+            break;
+        case UIGestureRecognizerStateEnded:
+            NSLog(@"%f", percentCompleted);
+            NSLog(@"ended");
+            break;
+        default:
+            break;
+    }
 }
 
 - (IBAction)presentNewControllerPressed:(UIButton *)sender
 {
     RIVPresentedViewController *presentedController = [self.storyboard instantiateViewControllerWithIdentifier:@"PresentedViewController"];
     presentedController.transitioningDelegate = self.transitionController;
-    
-//    NSLog(@"presentedVC instantiated");
     
     [self presentViewController:presentedController animated:YES completion:nil];
 }
@@ -83,39 +97,19 @@
     destController.transitioningDelegate = self.transitionController;
 }
 
-- (id<UIViewControllerAnimatedTransitioning>)tabBarController:(UITabBarController *)tabBarController animationControllerForTransitionFromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
-{
-    NSInteger fromVCindex = [tabBarController.viewControllers indexOfObject:fromVC];
-    NSInteger toVCindex = [tabBarController.viewControllers indexOfObject:toVC];
-    
-    RIVBaseAnimation *animation = [RIVSlideAnimation new];
-    
-    if (toVCindex > fromVCindex) {
-        animation.isPresenting = YES;
-    } else {
-        animation. isPresenting = NO;
-    }
-    
-    return animation;
-}
-
 - (IBAction)animationChanged:(UISegmentedControl *)sender
 {
     switch (sender.selectedSegmentIndex) {
-        case 0:
-            self.transitionController = self.slideTransitionController;
-            break;
-        case 1:
-            self.transitionController = self.scaleTransitionController;
-            break;
-        case 2:
-            self.transitionController = self.squeezeTransitinoController;
-            break;
-        default:
-            break;
+        case 0:     self.transitionController = self.slideTransitionController;     break;
+        case 1:     self.transitionController = self.scaleTransitionController;     break;
+        case 2:     self.transitionController = self.squeezeTransitinoController;   break;
     }
     self.navigationController.delegate = self.transitionController;
 }
+
+
+# pragma mark - Lazy Instantiation
+
 
 - (RIVTransitionController *)slideTransitionController
 {
@@ -130,6 +124,7 @@
 {
     if (!_scaleTransitionController) {
         RIVScaleAnimation *animation = [RIVScaleAnimation new];
+//        animation.customCenterPoint = CGPointMake(320, 0);
         _scaleTransitionController = [[RIVTransitionController alloc] initWithAnimation:animation];
     }
     return _scaleTransitionController;
@@ -143,6 +138,5 @@
     }
     return _squeezeTransitinoController;
 }
-
 
 @end

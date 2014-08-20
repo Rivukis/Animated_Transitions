@@ -6,13 +6,16 @@
 //  Copyright (c) 2014 CleverKnot. All rights reserved.
 //
 
-#import "RIVBaseAnimation.h"
+#import <Foundation/Foundation.h>
+#import "RIVBaseAnimationProtocol.h"
 
-@interface RIVScaleAnimation : RIVBaseAnimation
+@interface RIVScaleAnimation : NSObject <RIVBaseAnimationProtocol>
 
 @property (readonly, nonatomic) NSNumber *defaultDuration;
 @property (strong, nonatomic,) NSNumber *customDurationAll;
 @property (strong, nonatomic,) NSNumber *customDurationDismiss;
 @property (strong, nonatomic,) NSNumber *customDurationPresent;
+
+@property (assign, nonatomic) CGPoint customCenterPoint;
 
 @end

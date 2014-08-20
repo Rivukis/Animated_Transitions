@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 CleverKnot. All rights reserved.
 //
 
-#import "RIVBaseAnimation.h"
+#import <Foundation/Foundation.h>
+#import "RIVBaseAnimationProtocol.h"
 
-@interface RIVCellToDetailAnimation : RIVBaseAnimation
+@interface RIVCellToDetailAnimation : NSObject <RIVBaseAnimationProtocol>
 
 @property (readonly, nonatomic) NSNumber *defaultDuration;
 @property (strong, nonatomic,) NSNumber *customDurationAll;
@@ -16,8 +17,14 @@
 @property (strong, nonatomic,) NSNumber *customDurationPresent;
 
 @property (strong, nonatomic) UIImageView *cellImageView;
-@property (assign, nonatomic) CGRect cellImageCorrectedFrame; // Frame in Main View (not UICollectionView, etc.)
 @property (strong, nonatomic) UIImageView *detailImageView;
-@property (assign, nonatomic) CGRect detailImageCorrectedFrame; // Frame in Main View (not SubView, etc.)
+@property (strong, nonatomic) UIImageView *cellPieImageView;
+
+
+
+
+
+@property (strong, nonatomic) NSArray *fromObjects;
+@property (strong, nonatomic) NSArray *toObjects;
 
 @end

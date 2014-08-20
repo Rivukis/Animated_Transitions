@@ -10,7 +10,15 @@
 
 static const NSTimeInterval defaultDuration = 0.5;
 
+@interface RIVScaleAnimation ()
+
+@property (assign, nonatomic) BOOL centerAssigned;
+
+@end
+
 @implementation RIVScaleAnimation
+
+@synthesize isPresenting = _isPresenting;
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
@@ -26,7 +34,9 @@ static const NSTimeInterval defaultDuration = 0.5;
     UIViewController *toController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
     UIView *presentedView;
-    CGAffineTransform transform = CGAffineTransformMakeScale(0.01, 0.01);
+    CGAffineTransform transform = CGAffineTransformMakeScale(ACTING_ZERO, ACTING_ZERO);
+    CGPoint trueCenter = CGPointMake(containerView.frame.size.width/2, containerView.frame.size.height/2);
+    if (!self.centerAssigned) self.customCenterPoint = trueCenter;
     
     [containerView addSubview:toController.view];
     
@@ -34,6 +44,7 @@ static const NSTimeInterval defaultDuration = 0.5;
         presentedView = toController.view;
         presentedView.transform = transform;
         transform = CGAffineTransformIdentity;
+        presentedView.center = self.customCenterPoint;
     } else {
         presentedView = fromController.view;
         [containerView bringSubviewToFront:presentedView];
@@ -41,9 +52,16 @@ static const NSTimeInterval defaultDuration = 0.5;
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 options:0 animations:^{
         presentedView.transform = transform;
+        if (self.isPresenting) {presentedView.center = trueCenter;}
+        else {presentedView.center = self.customCenterPoint;}
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
     }];
+}
+- (void)setCustomCenterPoint:(CGPoint)customCenterPoint
+{
+    self.centerAssigned = YES;
+    _customCenterPoint = customCenterPoint;
 }
 
 - (void)setCustomDurationAll:(NSNumber *)durationAll

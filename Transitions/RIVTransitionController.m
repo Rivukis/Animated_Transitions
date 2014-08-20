@@ -7,11 +7,11 @@
 //
 
 #import "RIVTransitionController.h"
-#import "RIVBaseAnimation.h"
+#import "RIVInteractiveTransition.h"
 
 @implementation RIVTransitionController
 
-- (instancetype)initWithAnimation:(RIVBaseAnimation *)animation
+- (instancetype)initWithAnimation:(id<RIVBaseAnimationProtocol>)animation
 {
     self = [super init];
     if (self) {
@@ -52,11 +52,7 @@
     NSInteger fromVCindex = [tabBarController.viewControllers indexOfObject:fromVC];
     NSInteger toVCindex = [tabBarController.viewControllers indexOfObject:toVC];
     
-    if (toVCindex > fromVCindex) {
-        self.animation.isPresenting = YES;
-    } else {
-        self.animation. isPresenting = NO;
-    }
+    self.animation.isPresenting = (toVCindex > fromVCindex) ? YES : NO;
     
     return self.animation;
 }
@@ -67,14 +63,16 @@
 
 //- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator
 //{
-//    
+//    RIVInteractiveTransition *animation = [[RIVInteractiveTransition alloc] init];
+//    return animation;
 //}
 //
 //- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator
 //{
-//    
+//    RIVInteractiveTransition *animation = [[RIVInteractiveTransition alloc] init];
+//    return animation;
 //}
-//
+
 //- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController
 //{
 //    

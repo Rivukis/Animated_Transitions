@@ -12,6 +12,8 @@ static const NSTimeInterval defaultDuration = 0.5;
 
 @implementation RIVSqueezeAnimation
 
+@synthesize isPresenting = _isPresenting;
+
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
     if (self.isPresenting && self.customDurationPresent) return self.customDurationPresent.doubleValue;
@@ -30,10 +32,10 @@ static const NSTimeInterval defaultDuration = 0.5;
     [containerView addSubview:toController.view];
     
     CGFloat halfWidth = containerView.frame.size.width/2.0f;
-    CGAffineTransform skinnyLeft = CGAffineTransformConcat(CGAffineTransformMakeScale(0.01, 1),
-                                                           CGAffineTransformMakeTranslation(-halfWidth, 0.01));
-    CGAffineTransform skinnyRight = CGAffineTransformConcat(CGAffineTransformMakeScale(0.01, 1),
-                                                            CGAffineTransformMakeTranslation(halfWidth, 0.01));
+    CGAffineTransform skinnyLeft = CGAffineTransformConcat(CGAffineTransformMakeScale(ACTING_ZERO, 1),
+                                                           CGAffineTransformMakeTranslation(-halfWidth, ACTING_ZERO));
+    CGAffineTransform skinnyRight = CGAffineTransformConcat(CGAffineTransformMakeScale(ACTING_ZERO, 1),
+                                                            CGAffineTransformMakeTranslation(halfWidth, ACTING_ZERO));
     CGAffineTransform fromTransform;
     
     if (self.isPresenting) {

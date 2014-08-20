@@ -75,13 +75,11 @@
     
     // Setup New VC
     RIVCollectionDetailVC *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionDetailVC"];
-    CGRect thisIsUsedSoDetailVCDotViewWillBeLazilyInstantiated = detailVC.view.frame;
+    detailVC.view = detailVC.view; // This is to ensure that detailVC.view will be lazily instantiated
     
     // Setup Animation
     self.animation.cellImageView = cell.imageView;
-    self.animation.cellImageCorrectedFrame = [cell.superview convertRect:cell.frame toView:self.view];
     self.animation.detailImageView = detailVC.imageView;
-    self.animation.detailImageCorrectedFrame = [detailVC.imageView.superview convertRect:detailVC.imageView.frame toView:detailVC.view];
     
     // Setup Transition Controller
     self.transitionController = [[RIVTransitionController alloc] initWithAnimation:self.animation];

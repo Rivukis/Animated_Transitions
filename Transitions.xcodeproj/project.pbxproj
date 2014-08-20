@@ -12,6 +12,7 @@
 		7A1C5FF8199D4EB80078F34E /* RIVCollectionDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C5FF7199D4EB80078F34E /* RIVCollectionDetailVC.m */; };
 		7A1C5FFE199DB00F0078F34E /* RIVSqueezeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C5FFD199DB00F0078F34E /* RIVSqueezeAnimation.m */; };
 		7A1C6001199DDD9E0078F34E /* RIVCellToDetailAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C6000199DDD9E0078F34E /* RIVCellToDetailAnimation.m */; };
+		7AD5235219A33E24004DEB6B /* RIVInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5235119A33E24004DEB6B /* RIVInteractiveTransition.m */; };
 		7AFC1251199C9A94005E1A81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFC1250199C9A94005E1A81 /* Foundation.framework */; };
 		7AFC1253199C9A94005E1A81 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFC1252199C9A94005E1A81 /* CoreGraphics.framework */; };
 		7AFC1255199C9A94005E1A81 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFC1254199C9A94005E1A81 /* UIKit.framework */; };
@@ -28,7 +29,6 @@
 		7AFC1289199C9B51005E1A81 /* RIVPresentingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFC1288199C9B51005E1A81 /* RIVPresentingViewController.m */; };
 		7AFC128C199C9B5C005E1A81 /* RIVPresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFC128B199C9B5C005E1A81 /* RIVPresentedViewController.m */; };
 		7AFC128F199C9BC4005E1A81 /* RIVTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFC128E199C9BC4005E1A81 /* RIVTransitionController.m */; };
-		7AFC1292199C9BF9005E1A81 /* RIVBaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFC1291199C9BF9005E1A81 /* RIVBaseAnimation.m */; };
 		7AFC1295199C9C39005E1A81 /* RIVSlideAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFC1294199C9C39005E1A81 /* RIVSlideAnimation.m */; };
 		7AFC1298199C9CAE005E1A81 /* RIVScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFC1297199C9CAE005E1A81 /* RIVScaleAnimation.m */; };
 /* End PBXBuildFile section */
@@ -54,6 +54,9 @@
 		7A1C5FFD199DB00F0078F34E /* RIVSqueezeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIVSqueezeAnimation.m; sourceTree = "<group>"; };
 		7A1C5FFF199DDD9E0078F34E /* RIVCellToDetailAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIVCellToDetailAnimation.h; sourceTree = "<group>"; };
 		7A1C6000199DDD9E0078F34E /* RIVCellToDetailAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIVCellToDetailAnimation.m; sourceTree = "<group>"; };
+		7AD5235019A33E24004DEB6B /* RIVInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIVInteractiveTransition.h; sourceTree = "<group>"; };
+		7AD5235119A33E24004DEB6B /* RIVInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIVInteractiveTransition.m; sourceTree = "<group>"; };
+		7AD5235319A40A2C004DEB6B /* RIVBaseAnimationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RIVBaseAnimationProtocol.h; sourceTree = "<group>"; };
 		7AFC124D199C9A94005E1A81 /* Transitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transitions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AFC1250199C9A94005E1A81 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7AFC1252199C9A94005E1A81 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -77,8 +80,6 @@
 		7AFC128B199C9B5C005E1A81 /* RIVPresentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIVPresentedViewController.m; sourceTree = "<group>"; };
 		7AFC128D199C9BC4005E1A81 /* RIVTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIVTransitionController.h; sourceTree = "<group>"; };
 		7AFC128E199C9BC4005E1A81 /* RIVTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIVTransitionController.m; sourceTree = "<group>"; };
-		7AFC1290199C9BF9005E1A81 /* RIVBaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIVBaseAnimation.h; sourceTree = "<group>"; };
-		7AFC1291199C9BF9005E1A81 /* RIVBaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIVBaseAnimation.m; sourceTree = "<group>"; };
 		7AFC1293199C9C39005E1A81 /* RIVSlideAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIVSlideAnimation.h; sourceTree = "<group>"; };
 		7AFC1294199C9C39005E1A81 /* RIVSlideAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIVSlideAnimation.m; sourceTree = "<group>"; };
 		7AFC1296199C9CAE005E1A81 /* RIVScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIVScaleAnimation.h; sourceTree = "<group>"; };
@@ -109,6 +110,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A1C6002199EB2400078F34E /* Full Animations */ = {
+			isa = PBXGroup;
+			children = (
+				7AD5235319A40A2C004DEB6B /* RIVBaseAnimationProtocol.h */,
+				7AFC1293199C9C39005E1A81 /* RIVSlideAnimation.h */,
+				7AFC1294199C9C39005E1A81 /* RIVSlideAnimation.m */,
+				7AFC1296199C9CAE005E1A81 /* RIVScaleAnimation.h */,
+				7AFC1297199C9CAE005E1A81 /* RIVScaleAnimation.m */,
+				7A1C5FFC199DB00E0078F34E /* RIVSqueezeAnimation.h */,
+				7A1C5FFD199DB00F0078F34E /* RIVSqueezeAnimation.m */,
+				7A1C5FFF199DDD9E0078F34E /* RIVCellToDetailAnimation.h */,
+				7A1C6000199DDD9E0078F34E /* RIVCellToDetailAnimation.m */,
+			);
+			name = "Full Animations";
+			sourceTree = "<group>";
+		};
+		7AD5234F19A33DC0004DEB6B /* Interactive Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				7AD5235019A33E24004DEB6B /* RIVInteractiveTransition.h */,
+				7AD5235119A33E24004DEB6B /* RIVInteractiveTransition.m */,
+			);
+			name = "Interactive Transitions";
+			sourceTree = "<group>";
+		};
 		7AFC1244199C9A93005E1A81 = {
 			isa = PBXGroup;
 			children = (
@@ -204,16 +230,8 @@
 			children = (
 				7AFC128D199C9BC4005E1A81 /* RIVTransitionController.h */,
 				7AFC128E199C9BC4005E1A81 /* RIVTransitionController.m */,
-				7AFC1290199C9BF9005E1A81 /* RIVBaseAnimation.h */,
-				7AFC1291199C9BF9005E1A81 /* RIVBaseAnimation.m */,
-				7AFC1293199C9C39005E1A81 /* RIVSlideAnimation.h */,
-				7AFC1294199C9C39005E1A81 /* RIVSlideAnimation.m */,
-				7AFC1296199C9CAE005E1A81 /* RIVScaleAnimation.h */,
-				7AFC1297199C9CAE005E1A81 /* RIVScaleAnimation.m */,
-				7A1C5FFC199DB00E0078F34E /* RIVSqueezeAnimation.h */,
-				7A1C5FFD199DB00F0078F34E /* RIVSqueezeAnimation.m */,
-				7A1C5FFF199DDD9E0078F34E /* RIVCellToDetailAnimation.h */,
-				7A1C6000199DDD9E0078F34E /* RIVCellToDetailAnimation.m */,
+				7A1C6002199EB2400078F34E /* Full Animations */,
+				7AD5234F19A33DC0004DEB6B /* Interactive Transitions */,
 			);
 			name = Transition;
 			sourceTree = "<group>";
@@ -319,6 +337,7 @@
 				7AFC1295199C9C39005E1A81 /* RIVSlideAnimation.m in Sources */,
 				7AFC128F199C9BC4005E1A81 /* RIVTransitionController.m in Sources */,
 				7A1C5FF5199D4E580078F34E /* RIVCustomCollectionCell.m in Sources */,
+				7AD5235219A33E24004DEB6B /* RIVInteractiveTransition.m in Sources */,
 				7A1C5FF2199D4E2E0078F34E /* RIVCollectionVC.m in Sources */,
 				7AFC1261199C9A94005E1A81 /* RIVAppDelegate.m in Sources */,
 				7AFC128C199C9B5C005E1A81 /* RIVPresentedViewController.m in Sources */,
@@ -326,7 +345,6 @@
 				7A1C5FF8199D4EB80078F34E /* RIVCollectionDetailVC.m in Sources */,
 				7AFC125D199C9A94005E1A81 /* main.m in Sources */,
 				7A1C5FFE199DB00F0078F34E /* RIVSqueezeAnimation.m in Sources */,
-				7AFC1292199C9BF9005E1A81 /* RIVBaseAnimation.m in Sources */,
 				7AFC1298199C9CAE005E1A81 /* RIVScaleAnimation.m in Sources */,
 				7A1C6001199DDD9E0078F34E /* RIVCellToDetailAnimation.m in Sources */,
 			);

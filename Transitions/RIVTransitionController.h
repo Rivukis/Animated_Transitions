@@ -7,16 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-@class RIVBaseAnimation;
+#import "RIVBaseAnimationProtocol.h"
 
 @interface RIVTransitionController : NSObject
 <UIViewControllerTransitioningDelegate,
 UINavigationControllerDelegate,
 UITabBarControllerDelegate>
 
-- (instancetype)initWithAnimation:(RIVBaseAnimation *)animation;
+- (instancetype)initWithAnimation:(id<RIVBaseAnimationProtocol>)animation;
 
-@property (strong, nonatomic) RIVBaseAnimation *animation;
+@property (strong, nonatomic) id<RIVBaseAnimationProtocol> animation;
 
 //@property (strong, nonatomic) id<UINavigationControllerDelegate> navDelegate;
 

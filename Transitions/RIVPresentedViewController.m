@@ -35,6 +35,33 @@
     [label setTextAlignment:NSTextAlignmentCenter];
     [view addSubview:label];
     [self.view addSubview:view];
+    
+    UIScreenEdgePanGestureRecognizer *edgePan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(gestureHandler:)];
+    edgePan.edges = UIRectEdgeLeft;
+    [self.view addGestureRecognizer:edgePan];
+}
+
+- (void)gestureHandler:(UIScreenEdgePanGestureRecognizer *)edgePan
+{
+    CGPoint location = [edgePan locationInView:self.view];
+    double percentCompleted = location.x / 320.0f;
+    
+    switch (edgePan.state) {
+        case UIGestureRecognizerStateBegan:
+            //            NSLog(@"begin");
+            NSLog(@"%f", percentCompleted);
+            break;
+        case UIGestureRecognizerStateChanged:
+            //            NSLog(@"{%f, %f}", location.x, location.y);
+            NSLog(@"%f", percentCompleted);
+            break;
+        case UIGestureRecognizerStateEnded:
+            //            NSLog(@"ended");
+            NSLog(@"%f", percentCompleted);
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -12,6 +12,8 @@ static const NSTimeInterval defaultDuration = 0.4;
 
 @implementation RIVSlideAnimation
 
+@synthesize isPresenting = _isPresenting;
+
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
     if (self.isPresenting && self.customDurationPresent) return self.customDurationPresent.doubleValue;
